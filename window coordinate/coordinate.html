@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        width: 100px;
+        height: 100px;
+        background-color: bisque;
+        margin-bottom: 5px;
+    }
+
+    .event {
+        background-color: aqua;
+    }
+
+    span {
+        position: fixed;
+        right: 10px;
+    }
+</style>
+
+<body>
+    <span class="buttons">
+        <button class="X">scroll to 100</button>
+        <button class="Y">scroll by 100</button>
+        <button class="scrollTo">scroll to special</button>
+    </span>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div class="event"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+    const box = document.querySelector('.event');
+    const buttons = document.querySelector('.buttons');
+
+    box.addEventListener('click', (e) => {
+        console.log(box.getBoundingClientRect());
+        console.log(`client : ${e.clientX},${e.clientY}`);
+        console.log(`pageX : ${e.pageX},${e.pageY}`)
+    });
+
+    buttons.addEventListener('click', (event) => {
+        if(event.target.className === 'X') {
+            window.scrollTo(0, 100);
+        } else if(event.target.className === 'Y') {
+            window.scrollBy(0, 100);
+        } else if(event.target.className === 'scrollTo') {
+            box.scrollIntoView();
+        }
+    });
+
+</script>
+
+</body>
+
+</html>
